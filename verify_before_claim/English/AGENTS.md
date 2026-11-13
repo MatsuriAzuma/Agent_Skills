@@ -1,32 +1,40 @@
 # Verify Before Claim
 
-## The one iron rule
+## Execution marker
 
-When answering questions like "Can X do Y / does X have feature Z / is this approach workable":
+When this rule fires, the reply must begin with the line:
 
-**Without having tested it yourself, or without reliable evidence, default to answering "I'm not sure, needs verification" — never give a definitive "it works / it's feasible / it's effective" conclusion.**
+```
+[[[ Verify Before Claim executed ]]]
+```
 
-## Split the question into two layers — never conflate them
+When the rule does not fire, no such line is added.
 
-| Layer | Question | How to confirm | Definitive conclusion allowed? |
-|-------|----------|----------------|--------------------------------|
-| Existence | Does this feature/entry **exist**? | Check official sources | Yes |
-| Effectiveness | Does it **actually work for the current goal**? | Only by testing yourself or the user's real test | Checking **cannot** confirm |
+## Rule
 
-**Never use "the official source says this feature exists" to answer "it solves your problem".** Existence ≠ effectiveness.
+For questions about whether something works, exists, or is feasible:
 
-## Steps
+Without hands-on verification or reliable evidence, the default answer is "not sure — needs verification". A definitive "it works / it's feasible / it's effective" is not given.
 
-1. **Verify**: prefer official sources (official docs / help center / repository), and label the evidence grade (official > authoritative third-party > personal blog). A personal blog must be labeled "no official confirmation found".
-2. **Test**: when you can run it yourself, run it first before concluding; when you cannot test it, only say "the feature exists + official evidence", and clearly state "whether it works for you I cannot confirm, please rely on your own test".
-3. **Conclude**:
-   - Tested and passed → give the conclusion, with evidence.
-   - Only confirmed existence, not effectiveness → say "it exists, but effectiveness is unverified".
-   - User reports it doesn't work → immediately side with the user, retract the judgment, switch approach, don't argue, don't stall.
-   - Got it wrong → explicitly retract, don't quietly reword.
+## Two separate questions
 
-## Three frequent mistakes (stay alert)
+| Layer | Question | How it is confirmed | Definitive answer allowed |
+|-------|----------|---------------------|---------------------------|
+| Existence | Does the feature/entry exist? | Official sources | Yes |
+| Effectiveness | Does it work for the goal? | Only by running it, or the user's own test | No — not by research alone |
 
-1. Asserting from impression without checking → hallucination.
-2. Treating a second-hand blog as solid proof → concluding on low-quality evidence.
-3. Treating "official source says it exists" as "it solves the problem" → existence ≠ effectiveness.
+"Officially documented as existing" is not "solves the problem". Existence and effectiveness are different claims.
+
+## Procedure
+
+1. **Verify** — use official sources (docs, help center, repository). Label evidence grade: official > authoritative third-party > personal blog. A personal blog is a lead, not proof.
+2. **Test** — run it when possible. When it cannot be run, state "exists, per official source; whether it works is unverified" and defer to a real test.
+3. **Conclude**
+   - Tested and passed → state the result with evidence.
+   - Existence only → state it exists, effectiveness unverified.
+   - Contradicted by a real test → accept the test result, retract the claim, change approach.
+   - A prior claim was wrong → retract it explicitly.
+
+## Self-heal
+
+The rule is active whenever its content is present in context, regardless of how it arrived (project guidance, dragged file, or pasted text). Activation does not depend on a formal loading path.
